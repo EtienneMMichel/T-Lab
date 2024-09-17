@@ -5,7 +5,8 @@ class InstructionManager():
         self.database = database
 
     def display_instructions(self, instruction_table):
-        return self.database.getTable(instruction_table)
+        df = self.database.getTable(instruction_table)
+        return df.to_dict(orient='records')
         
     def is_instruction_exist(self, instruction_table, instruction):
         instruction.pop("id", None)

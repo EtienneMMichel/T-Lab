@@ -12,6 +12,7 @@ python-dotenv = "^1.0.1"
 sqlalchemy = "^2.0.35"
 pandas = "^2.2.2"
 pymysql = "^1.1.1"
+fastapi = {extras = ["standard"], version = "^0.114.2"}
 
 
 [build-system]
