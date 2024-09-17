@@ -34,11 +34,11 @@ def stream(core_model, r):
 
         instructions = core_model.check_instructions()
         if not instructions is None:
-            print(instructions)
-            # data_to_send = {"data": instructions,
-            #                 "from": "collector",
-            #                 }
-            # r.publish(PUB_KEY,data_to_send)
+            data_to_send = {"data": instructions,
+                            "from": "collector",
+                            }
+            data_to_send = json.dumps(data_to_send, ensure_ascii=False)
+            r.publish(PUB_KEY,data_to_send)
 
                 
 

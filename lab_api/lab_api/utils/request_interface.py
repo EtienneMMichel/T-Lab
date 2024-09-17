@@ -8,3 +8,4 @@ class CollectorInstruction:
     exchange:int
     symbol:str
     rate:int
+    data_type:str
