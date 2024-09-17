@@ -7,6 +7,8 @@ class InstructionManager():
     def display_instructions(self, instruction_table):
         df = self.database.getTable(instruction_table)
         return df.to_dict(orient='records')
+    
+
         
     def is_instruction_exist(self, instruction_table, instruction):
         instruction.pop("id", None)
@@ -40,3 +42,8 @@ class InstructionManager():
             self.database.replace_table(instruction_table,instructions_inside_db)
             return "Success"
         return "Instruction not exist"
+    
+    def remove_all_instructions(self, instruction_table):
+        df = self.database.getTable(instruction_table)
+        self.database.replace_table(instruction_table,pd.DataFrame(columns=df.columns))
+        return "Success"

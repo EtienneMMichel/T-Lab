@@ -46,10 +46,16 @@ async def remove_instruction(request:request_interface.InstructionBody) -> dict:
     return {"status": status}
 
 @app.post("/display_instructions")
-async def display_instructions(request:request_interface.InstructionBody) -> dict:
+async def display_instructions(request:request_interface.DisplayBody) -> dict:
     core_model = Core(database_config=DATABASE_CONFIG) 
     instructions = core_model.display_instructions(instruction_table=request.table)
     return {"status": "Success", "data":instructions}
+
+@app.post("/remove_all_instructions")
+async def remove_all_instructions(request:request_interface.DisplayBody) -> dict:
+    core_model = Core(database_config=DATABASE_CONFIG) 
+    status = core_model.remove_all_instructions(instruction_table=request.table)
+    return {"status": status}
 
 if __name__ == "__main__":
     print(DATABASE_CONFIG)    
