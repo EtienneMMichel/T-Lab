@@ -1,0 +1,11 @@
+from enum import IntEnum
+
+class Status(IntEnum):
+    SUCCESS = 0
+    EXCEPTION = 1
+    NOT_ENOUGH_BALANCE = 2
+    INVALID_PARAMETERS = 3
+    LIMIT_MODE_ONLY = 4
+    STOP_LOSS_ORDER_NOT_SUPPORTED = 5
+    TAKE_PROFIT_ORDER_NOT_SUPPORTED = 6
+    INVALID_SIZE = 7
