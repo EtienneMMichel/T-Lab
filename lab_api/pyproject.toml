@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "lab-api"
+version = "0.1.0"
+description = ""
+authors = ["Etienne <etienne.micheladj@gmail.com>"]
+readme = "README.md"
+packages = [{include = "lab_api"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+python-dotenv = "^1.0.1"
+sqlalchemy = "^2.0.35"
+pandas = "^2.2.2"
+pymysql = "^1.1.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
