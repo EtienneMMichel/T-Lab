@@ -22,7 +22,7 @@ def stream(core_model, r):
             except TypeError:
                 instructions = None
             if isinstance(instructions, dict):
-                core_model.process_instructions(instructions)
+                core_model.process_instructions(instructions["data"])
                 
         core_model.send_data(r)
                 
