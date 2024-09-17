@@ -18,18 +18,13 @@ def stream(core_model, r):
             # print(message["data"])
             # print(isinstance(message["data"], dict))
             try:
-                in_data = json.loads(message["data"])
+                instructions = json.loads(message["data"])
             except TypeError:
-                in_data = None
-            if isinstance(in_data, dict):
-                pass
-                # --------------------------------------------------------
-                data, pub_key = core_model.process(in_data)
-                data_to_send = {"data": data,
-                                "from": "connector",
-                                }
-                r.publish(pub_key,data_to_send)
-                # --------------------------------------------------------
+                instructions = None
+            if isinstance(instructions, dict):
+                core_model.process_instructions(instructions)
+                
+        core_model.send_data(r)
                 
 
 

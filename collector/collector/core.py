@@ -1,9 +1,12 @@
-PUB_KEY = "connector_request"
+
 
 
 class Core():
     def __init__(self) -> None:
         pass
 
-    def process(self, in_data):
+    def store(self, in_data):
+        raise NotImplementedError()
+    
+    def check_instructions(self):
         raise NotImplementedError()

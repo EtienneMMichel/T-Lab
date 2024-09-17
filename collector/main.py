@@ -6,7 +6,7 @@ import json
 
 
 SUB_KEY = "collector"
-
+PUB_KEY = "connector_request"
 
 def stream(core_model, r):
     p = r.pubsub()
@@ -22,14 +22,15 @@ def stream(core_model, r):
             except TypeError:
                 in_data = None
             if isinstance(in_data, dict):
-                pass
-                # --------------------------------------------------------
-                data, pub_key = core_model.process(in_data)
-                data_to_send = {"data": data,
-                                "from": "collector",
-                                }
-                r.publish(pub_key,data_to_send)
-                # --------------------------------------------------------
+                core_model.store(in_data)
+
+        instructions = core_model.check_instructions()
+        if not instructions is None:
+            data_to_send = {"data": instructions,
+                            "from": "collector",
+                            }
+            r.publish(PUB_KEY,data_to_send)
+
                 
 
 
