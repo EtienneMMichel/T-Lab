@@ -29,7 +29,8 @@ if __name__ == "__main__":
             id INT AUTO_INCREMENT PRIMARY KEY,
             exchange INTEGER,
             symbol VARCHAR(255),
-            rate INTEGER
+            rate INTEGER,
+            data_type VARCHAR(255)
         );
         """
     res = conn.fetch(create_table_query)

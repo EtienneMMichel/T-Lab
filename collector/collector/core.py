@@ -18,6 +18,8 @@ class Core():
         if (self.current_instructions is None) or (not collector_instructions.equals(self.current_instructions)):
             print("INSTRUCTIONS UPDATE")
             self.current_instructions = collector_instructions.copy(deep=True)
-            return collector_instructions.to_dict(orient='records')
+            res = collector_instructions.to_dict(orient='records')
+            if len(res) > 0:
+                return res
 
         return None
