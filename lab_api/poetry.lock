@@ -143,6 +143,24 @@ docs = ["Sphinx", "furo"]
 test = ["objgraph", "psutil"]
 
 [[package]]
+name = "gunicorn"
+version = "23.0.0"
+description = "WSGI HTTP Server for UNIX"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+packaging = "*"
+
+[package.extras]
+eventlet = ["eventlet (>=0.24.1,!=0.36.0)"]
+gevent = ["gevent (>=1.4.0)"]
+setproctitle = ["setproctitle"]
+testing = ["coverage", "eventlet", "gevent", "pytest", "pytest-cov"]
+tornado = ["tornado (>=0.2)"]
+
+[[package]]
 name = "h11"
 version = "0.14.0"
 description = "A pure-Python, bring-your-own-I/O implementation of HTTP/1.1"
@@ -270,6 +288,14 @@ description = "Fundamental package for array computing in Python"
 category = "main"
 optional = false
 python-versions = ">=3.10"
+
+[[package]]
+name = "packaging"
+version = "24.1"
+description = "Core utilities for Python packages"
+category = "main"
+optional = false
+python-versions = ">=3.8"
 
 [[package]]
 name = "pandas"
@@ -594,7 +620,7 @@ python-versions = ">=3.8"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "d1a7b913896e4f47b7b9b54cc1442b49d1642411ae3dc0ccfff469600f089dc7"
+content-hash = "36fd238b62809ad79d7a005f6d715128798ea0efbc883c47d243ccb4268419f9"
 
 [metadata.files]
 annotated-types = [
@@ -704,6 +730,10 @@ greenlet = [
     {file = "greenlet-3.1.0-cp39-cp39-win32.whl", hash = "sha256:d0dd943282231480aad5f50f89bdf26690c995e8ff555f26d8a5b9887b559bcc"},
     {file = "greenlet-3.1.0-cp39-cp39-win_amd64.whl", hash = "sha256:ac0adfdb3a21dc2a24ed728b61e72440d297d0fd3a577389df566651fcd08f97"},
     {file = "greenlet-3.1.0.tar.gz", hash = "sha256:b395121e9bbe8d02a750886f108d540abe66075e61e22f7353d9acb0b81be0f0"},
+]
+gunicorn = [
+    {file = "gunicorn-23.0.0-py3-none-any.whl", hash = "sha256:ec400d38950de4dfd418cff8328b2c8faed0edb0d517d3394e457c317908ca4d"},
+    {file = "gunicorn-23.0.0.tar.gz", hash = "sha256:f014447a0101dc57e294f6c18ca6b40227a4c90e9bdb586042628030cba004ec"},
 ]
 h11 = [
     {file = "h11-0.14.0-py3-none-any.whl", hash = "sha256:e3fe4ac4b851c468cc8363d500db52c2ead036020723024a109d37346efaa761"},
@@ -887,6 +917,10 @@ numpy = [
     {file = "numpy-2.1.1-pp310-pypy310_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:50a95ca3560a6058d6ea91d4629a83a897ee27c00630aed9d933dff191f170cd"},
     {file = "numpy-2.1.1-pp310-pypy310_pp73-win_amd64.whl", hash = "sha256:99f4a9ee60eed1385a86e82288971a51e71df052ed0b2900ed30bc840c0f2e39"},
     {file = "numpy-2.1.1.tar.gz", hash = "sha256:d0cf7d55b1051387807405b3898efafa862997b4cba8aa5dbe657be794afeafd"},
+]
+packaging = [
+    {file = "packaging-24.1-py3-none-any.whl", hash = "sha256:5b8f2217dbdbd2f7f384c41c628544e6d52f2d0f53c6d0c3ea61aa5d1d7ff124"},
+    {file = "packaging-24.1.tar.gz", hash = "sha256:026ed72c8ed3fcce5bf8950572258698927fd1dbda10a5e981cdf0ac37f4f002"},
 ]
 pandas = [
     {file = "pandas-2.2.2-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:90c6fca2acf139569e74e8781709dccb6fe25940488755716d1d354d6bc58bce"},

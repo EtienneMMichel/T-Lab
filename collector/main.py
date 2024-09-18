@@ -11,6 +11,7 @@ IP = os.getenv('IP')
 USER = os.getenv('USER')
 PASSWORD = os.getenv('PASSWORD')
 DBNAME = os.getenv('DBNAME')
+REDIS_HOST = os.getenv('REDIS_HOST')
 
 
 SUB_KEY = "collector"
@@ -45,7 +46,8 @@ def stream(core_model, r):
 
 if __name__ == "__main__":
     # global_config = yaml.safe_load(open(sys.argv[1], "r"))
-    r = redis.Redis('localhost', 6379, charset="utf-8", decode_responses=True)
+    print(REDIS_HOST)
+    r = redis.Redis(REDIS_HOST, 6379, charset="utf-8", decode_responses=True)
     print("SETUP INSTANCE")
     database_config = {
         "ip":IP,

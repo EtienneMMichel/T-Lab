@@ -4,6 +4,13 @@ import json
 # import yaml
 # import sys
 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+REDIS_HOST = os.getenv('REDIS_HOST')
+
 
 SUB_KEY = "connector_request"
 
@@ -24,14 +31,14 @@ def stream(core_model, r):
             if isinstance(instructions, dict):
                 if instructions["from"] == "collector":
                     core_model.process_instructions(instructions["data"])
-                
+                    
         core_model.send_data(r)
                 
 
 
 if __name__ == "__main__":
     # global_config = yaml.safe_load(open(sys.argv[1], "r"))
-    r = redis.Redis('localhost', 6379, charset="utf-8", decode_responses=True)
+    r = redis.Redis(REDIS_HOST, 6379, charset="utf-8", decode_responses=True)
     print("SETUP INSTANCE")
     core_model = Core()
     print("STREAM")

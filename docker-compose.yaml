@@ -8,8 +8,25 @@ services:
             - ./config/redis.conf:/redis.conf
         command: [ "redis-server", "/redis.conf" ]
 
-    # treasurer:
-    #     image: aurum:aurum-treasurer
-    #     build: treasurer
-    #     depends_on:
-    #         - "redis"
+    collector:
+        image: t-lab:collector
+        build: collector
+        env_file: ".env"
+        depends_on:
+            - "redis"
+
+    connectors:
+        image: t-lab:connectors
+        build: connectors
+        env_file: ".env"
+        depends_on:
+            - "redis"
+    
+    lab_api:
+        image: t-lab:lab_api
+        build: lab_api
+        env_file: ".env"
+        ports:
+            - "8000:8000"
+        depends_on:
+            - "redis"
