@@ -11,7 +11,7 @@ class Core():
         self.current_instructions = None
 
     def store(self, in_data):
-        print(in_data)
+        raise NotImplementedError()
     
     def check_instructions(self):
         collector_instructions = self.database.getTable("collector_instructions")

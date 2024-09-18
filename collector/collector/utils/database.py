@@ -173,13 +173,6 @@ class Database():
         finally:
             self.__mutex.release()
 
-    def replace_table(self, table, dataframe):
-        self.__mutex.acquire()
-        try:
-            dataframe.to_sql(table, con=self.engine, if_exists='replace', index=False)
-        finally:
-            self.__mutex.release()
-
     def getTableChunked(self, table):
         columns = [column[0] for column in self.execute("SHOW columns FROM {}".format(table), fetch=True)]
         df = pd.DataFrame(list(self.extract(table, "*")), columns=columns)

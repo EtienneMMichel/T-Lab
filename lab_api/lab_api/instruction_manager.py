@@ -37,13 +37,12 @@ class InstructionManager():
     def remove_instruction(self, instruction_table, instruction):
         instruction_already_exist, instruction_id = self.is_instruction_exist(instruction_table, instruction)
         if instruction_already_exist:
-            instructions_inside_db = self.database.getTable(instruction_table)
-            instructions_inside_db.drop(index=instructions_inside_db[instructions_inside_db["id"] == instruction_id].index, inplace=True)
-            self.database.replace_table(instruction_table,instructions_inside_db)
+            update_users_sql = f"DELETE FROM {instruction_table} WHERE id = {instruction_id}"
+            self.database.execute(update_users_sql)
             return "Success"
         return "Instruction not exist"
     
     def remove_all_instructions(self, instruction_table):
-        df = self.database.getTable(instruction_table)
-        self.database.replace_table(instruction_table,pd.DataFrame(columns=df.columns))
+        update_users_sql = f"DELETE FROM {instruction_table}"
+        self.database.execute(update_users_sql)
         return "Success"
