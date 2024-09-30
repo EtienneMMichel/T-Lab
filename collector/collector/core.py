@@ -20,7 +20,7 @@ class Core():
             "symbol":in_data["binance_symbol"],
             "sell":json.dumps(in_data["sell"]),
             "buy":json.dumps(in_data["buy"]),
-            "date":str(datetime.now())
+            "date":in_data["timestamp"]
         }])
         self.database.append_to_table(TABLE, df)
     
