@@ -58,4 +58,4 @@ async def remove_all_instructions(request:request_interface.DisplayBody) -> dict
     return {"status": status}
 
 if __name__ == "__main__":
-    uvicorn.run("app:app", port=5000, log_level="info")
+    uvicorn.run("app:app", port=8000, log_level="info")

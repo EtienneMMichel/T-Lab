@@ -10,4 +10,4 @@ RUN pip install poetry
 RUN poetry config virtualenvs.create false
 RUN poetry install --only main
 # CMD ["poetry", "run", "python", "app.py"]
-CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "app:app", "--bind", "127.0.0.1:8000"]
+CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "app:app", "--bind", "0.0.0.0:8000"]

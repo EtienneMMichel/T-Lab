@@ -1,5 +1,6 @@
 from .utils import Database
 
+TABLE = ""
 
 class Core():
     def __init__(self, database_config) -> None:
@@ -11,7 +12,8 @@ class Core():
         self.current_instructions = None
 
     def store(self, in_data):
-        raise NotImplementedError()
+        print(in_data)
+        # self.database.append_to_table(TABLE, df)
     
     def check_instructions(self):
         collector_instructions = self.database.getTable("collector_instructions")
