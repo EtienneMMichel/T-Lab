@@ -41,7 +41,7 @@ if __name__ == "__main__":
             symbol VARCHAR(255),
             buy LONGTEXT,
             sell LONGTEXT,
-            date FLOAT
+            date VARCHAR(255)
         );
         """
     
