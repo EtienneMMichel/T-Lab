@@ -15,13 +15,13 @@ class Core():
 
     def store(self, in_data):
         in_data = in_data["data"]
-        df = pd.DataFrame({
+        df = pd.DataFrame.from_records([{
             "platform_id":in_data["platform_id"],
             "symbol":in_data["binance_symbol"],
             "sell":json.dumps(in_data["sell"]),
             "buy":json.dumps(in_data["buy"]),
             "date":str(datetime.now().timestamp())
-        })
+        }])
         self.database.append_to_table(TABLE, df)
     
     def check_instructions(self):
