@@ -24,7 +24,7 @@ class Connector():
         
 if __name__ == "__main__":
     conn = Connector(ip=IP, user=USER, password=PASSWORD, database=DATABASE)
-    create_table_query = """
+    create_collector_instructions_table_query = """
         CREATE TABLE IF NOT EXISTS collector_instructions (
             id INT AUTO_INCREMENT PRIMARY KEY,
             exchange INTEGER,
@@ -33,4 +33,19 @@ if __name__ == "__main__":
             data_type VARCHAR(255)
         );
         """
-    res = conn.fetch(create_table_query)
+    
+    create_orderbooks_table_query = """
+        CREATE TABLE IF NOT EXISTS orderbooks (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            platform_id INTEGER,
+            symbol VARCHAR(255),
+            buy LONGTEXT,
+            sell LONGTEXT,
+            date FLOAT
+        );
+        """
+    
+
+    
+    res = conn.fetch(create_collector_instructions_table_query)
+    res = conn.fetch(create_orderbooks_table_query)

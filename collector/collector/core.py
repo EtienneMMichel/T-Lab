@@ -1,6 +1,8 @@
 from .utils import Database
-
-TABLE = ""
+import pandas as pd
+from datetime import datetime
+import json
+TABLE = "orderbooks"
 
 class Core():
     def __init__(self, database_config) -> None:
@@ -12,8 +14,15 @@ class Core():
         self.current_instructions = None
 
     def store(self, in_data):
-        print(in_data)
-        # self.database.append_to_table(TABLE, df)
+        in_data = in_data["data"]
+        df = pd.DataFrame({
+            "platform_id":in_data["platform_id"],
+            "symbol":in_data["binance_symbol"],
+            "sell":json.dumps(in_data["sell"]),
+            "buy":json.dumps(in_data["buy"]),
+            "date":str(datetime.now().timestamp())
+        })
+        self.database.append_to_table(TABLE, df)
     
     def check_instructions(self):
         collector_instructions = self.database.getTable("collector_instructions")
